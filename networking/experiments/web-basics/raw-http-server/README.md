@@ -102,6 +102,6 @@ This directly confirms the principle from [browser-page-load.md](../../../browse
 
 ---
 
-**Interview line:** HTTP is plain text transmitted over a TCP socket, where headers and body are delimited by a double CRLF (`\r\n\r\n`), and the server explicitly terminates the stream to signal response completion.
+**Key takeaway:** HTTP is plain text transmitted over a TCP socket, where headers and body are delimited by a double CRLF (`\r\n\r\n`), and the server explicitly terminates the stream to signal response completion.
 
 Next: [node-http-server](../../../README.md) (Using Node's built-in `http` module to abstract socket parsing).

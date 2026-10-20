@@ -8,6 +8,6 @@ Stage: <where this sits on the request journey>
 - what I saw, not just what I read
 - note anything I got wrong at first
 
-**Interview line:** one sentence I could say out loud.
+**Key takeaway:** one sentence summary of the core concept.
 
 Next: [<next note>](<next-note>.md)

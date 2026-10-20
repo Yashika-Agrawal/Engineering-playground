@@ -10,6 +10,6 @@ Stage: browser, after the first response
 - CSS is render-blocking: the browser keeps parsing the HTML but will not paint until the CSS is ready. A plain `<script>` is different, since it pauses HTML parsing itself unless it uses `defer` or `async`.
 - A CDN keeps copies of static files (images, CSS, JS) on servers close to the user. The first request is slow, repeat requests come from the nearby cache.
 
-**Interview line:** A page load is a tree of requests, and the HTML response is what triggers the rest.
+**Key takeaway:** A page load is a tree of requests, and the HTML response is what triggers the rest.
 
 Back to: [Content-Type and www](content-type-and-www.md)

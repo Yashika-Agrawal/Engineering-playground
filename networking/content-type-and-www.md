@@ -11,6 +11,6 @@ Stage: a response arrives at the browser
 - `www` is just a subdomain that sites use by convention, not a type of server. `chaicode.com` sending me to `www.chaicode.com` is the owner picking one main address and redirecting the other (a 301 with a `Location` header).
 - The browser's HTML parser collapses newlines and extra spaces into one space, which is why plain text lines ran together. Layout needs markup like `<br>` and `<p>`.
 
-**Interview line:** The browser decides what a response is from the Content-Type header, not from the content itself.
+**Key takeaway:** The browser decides what a response is from the Content-Type header, not from the content itself.
 
 Next: [Browser page load](browser-page-load.md)
