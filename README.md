@@ -2,7 +2,7 @@
 
 I'm learning backend engineering by following one request from the browser
 to the database and back. Each note is short and diagram-first, so I can use
-it for quick revision and interview prep.
+it for quick revision.
 
 ![Request and response](networking/diagrams/request-response.png)
 
