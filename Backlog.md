@@ -2,8 +2,8 @@
 
 Questions that came up while learning. Each one becomes a note when I pick it up.
 
-| Question | Came from | Stage of the journey | Status |
+| Question | Came from | Domain | Status |
 |---|---|---|---|
-| Why does CSS block rendering but some scripts block parsing? | [web-basics](01-network/01-web-basics/README.md) | browser | open |
-| How does a CDN decide what to cache? | [web-basics](01-network/01-web-basics/README.md) | network edge | open |
-| How does a 301 redirect work (www vs non-www)? | [web-basics](01-network/01-web-basics/README.md) | HTTP | open |
+| Why does CSS block rendering but plain scripts block parsing? | [browser-page-load](networking/browser-page-load.md) | networking | open |
+| How does a CDN decide what to cache? | [browser-page-load](networking/browser-page-load.md) | networking | open |
+| How does a 301 redirect work (www vs non-www)? | [content-type-and-www](networking/content-type-and-www.md) | networking | open |
