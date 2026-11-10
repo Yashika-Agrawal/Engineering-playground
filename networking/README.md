@@ -1,7 +1,6 @@
 # Networking
 
 Back to the [journey overview](../README.md).
-
 | Note | One-line summary |
 |---|---|
 | [Content-Type and www](content-type-and-www.md) | A header tells the browser how to treat a response |
