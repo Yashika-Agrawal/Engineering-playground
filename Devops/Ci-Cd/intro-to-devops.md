@@ -1,4 +1,4 @@
-# CI CD Pipeline
+# Intro to DevOps
 
 curl https://localhost:3000
 
@@ -33,4 +33,4 @@ Problems with this:
 - The hardware of our laptop is not optimzied to be a server to handle traffic.
 - Public ip's are limited, ipv4 have already been exhausted.
 
-So our Internet Service provider keep us behind nat( network address translation)
+So our Internet Service provider keep us behind nat( network address translation), they route our request to let's suppose youtube.com and can provide us with public IP. Jio keeps us behind cgnat which has one public IP for a particular area, so they can't provide public IP, other local service providers which are not behind cgnat can provide us with public IP.
