@@ -27,3 +27,16 @@ az acr repository update
 ##### Azure web app instance
 
 Its a publically accessible URL, or a running copy of your application. On scaling out, Azure app can create multiple instances of your applications, traffic is automatically distributed using Azure load balancing
+
+**Managed Identities in Azure web apps**
+
+Credential management is big problem for security we can't sotre them as hardcoded which is vulnerable to attackers. Credentials needs to be rotated, updated, protected
+
+Supose from your azure web app you want to access storage account, you should not go from API keys route, it should go from managed identity, it has the right set of permissions which let it access storage account. No burden of rotating api keys.
+
+Two types of managed identities:
+
+1. System Assigned: Tied to azure resource, will be deleted with it, one identity per azure resource, cannot be reused across resources, single app requires azure resource acesss.
+2. User Assigned: Independent of azure resource, multiple resources can be attached with one identity, can be reused across web apps, containers, functions etc, multiple apps requires same permissions ( centralized RBAC )
+
+This is useful when we create ACR, by giving System Assigned Managed Identity to protect from pulling, pushing images to ACR.
