@@ -16,3 +16,11 @@ Instead of having a hardcoded health endpoint in our application we can configur
 Monitoring -> Health check -> check health check -> give path ("/health") -> load balancing threshold - 10 minutes ( if the status is unhealth for 10 minutes it wil be removed from load balancer and added back once its healthy to recieve traffic) -> Save
 
 check instance tab, you will see Status - Healthy there!
+
+### Working with env variables
+
+curently you are writting your env variables and secrets in .env file instead of that we can make it dyanmic when you run the image.
+
+ex: os.environ.get() which loads env variables on demand instead of os.getenv() in app.py file. Now this will take env variables which are in azxure web app instance.
+
+Go in settings -> eng variables -> edit env variables -> add , add the env variables with key value pair here, for the app.
