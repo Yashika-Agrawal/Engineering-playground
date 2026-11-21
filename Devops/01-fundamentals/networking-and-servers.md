@@ -4,17 +4,17 @@ curl https://localhost:3000
 
 127.0.0.1 is a ip address of my machine, but we don't write this while starting app using our ip address.
 
-![](assets/20261113_011555_image.png)
+![](../assets/20261113_011555_image.png)
 
 Our machine have there own DNS, here in above screenshot localhost is redirected to 127.0.0.1
 
 Tried adding my own local dns route: yashika.local
 
-![](assets/20261113_014529_image.png)
+![](../assets/20261113_014529_image.png)
 
 Confirming if pinging to yashika.local will route to our local:
 
-![](assets/20261113_020018_image.png)
+![](../assets/20261113_020018_image.png)
 
 - ping : checks whether a machine is reachable over a network
 - -c 4: sends 4 packets
@@ -35,7 +35,7 @@ Problems with this:
 
 So our Internet Service provider keep us behind nat( network address translation), they route our request to let's suppose youtube.com and can provide us with public IP. Jio keeps us behind cgnat 9 carrier grade network address translation) which has one public IP for a particular area, so they can't provide public IP, other local service providers which are not behind cgnat can provide us with public IP.
 
-![](assets/20261113_232502_image.png)
+![](../assets/20261113_232502_image.png)
 
 - Here our wifi router is performing NAT, each device has its own private IP but it is sharing one public IP address accessing the internet.
 
@@ -51,7 +51,7 @@ You're basically telling your router:
 
 "When someone sends a request to my public IP on port 3000, forward that request to my Mac's private IP on port 3000."
 
-![](assets/20261113_235210_image.png)
+![](../assets/20261113_235210_image.png)
 
 The router forwards incoming traffic on a particular port to a particular device and port inside your network.
 

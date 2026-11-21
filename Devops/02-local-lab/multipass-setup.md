@@ -14,11 +14,11 @@ If you use external cloud like excloud then the ssh won't work why? because you 
 
 But if you use local ubuntu machine it might not have those firewall rules, so we could connect to it.
 
-![](assets/20261117_205809_image.png)
+![](../assets/20261117_205809_image.png)
 
 - The above screenshot shows it listens on port 22, and is active running to listen on it.
 
-![](assets/20261117_205954_image.png)
+![](../assets/20261117_205954_image.png)
 
 `ssh -i ~/.ssh/id_ed25519 ubuntu@YOUR_VM_IP`- Run this command to check if you are able to connect to your machine.
 
@@ -58,7 +58,7 @@ The second line means:
 
 you can try again, or check in verbose mode the issue.
 
-![](assets/20261117_211717_image.png)
+![](../assets/20261117_211717_image.png)
 
 Here we connected to our machine from our mac, using our private key from our mac.
 
@@ -72,7 +72,7 @@ run the below command on ubuntu vm:
 sudo apt update
 ```
 
-![](assets/20261117_221250_image.png)
+![](../assets/20261117_221250_image.png)
 
 ### Connecting Ubuntu VM to a Private GitHub Repository
 
@@ -554,4 +554,4 @@ RailRush now appears instead of the default Nginx welcome page.
 
 Deployed our website to ubuntu server: 😄
 
-![](assets/20261118_014713_image.png)
+![](../assets/20261118_014713_image.png)
