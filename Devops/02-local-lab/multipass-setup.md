@@ -1,4 +1,4 @@
-# Deploying wiTH MultiPass
+# Deploying with MultiPass
 
 multipass will be used to make ci cd pipelines, make VM , deploy in linux locally.
 
