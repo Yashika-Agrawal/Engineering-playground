@@ -36,7 +36,7 @@ jobs:
                npm install
 ```
 
-- for private_key we will create a private key for github , and put that into secrets into github, and give location of it here. Ex: ${{secrets.Private_key}}
+- for private_key we will create a private key for github , and put that into secrets and variables->actions, into github, and give location of it here. Ex: ${{secrets.Private_key}}
 - Put the public key generated for github too in your ubuntu instance too.
 - Commit your local changes and you can see in Actions tab of github, where your worksflows will be present.
 
