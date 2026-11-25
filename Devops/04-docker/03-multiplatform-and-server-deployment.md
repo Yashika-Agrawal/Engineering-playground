@@ -96,7 +96,40 @@ Instead of manually pulling and running the container on the VM every time code 
 
 ---
 
-## 5. Key Architecture Principles
+## 5. Troubleshooting: Docker Socket Permission Denied
+
+### What error we got in GitHub Actions:
+```text
+Run docker pull yashika292002/railrush:latest
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+Error: Process completed with exit code 1.
+```
+
+### Why did this happen?
+- The Docker daemon communicates via a Unix domain socket at `/var/run/docker.sock`, which is owned by `root:docker`.
+- Our GitHub Actions self-hosted runner was running as a background systemd service under the `ubuntu` user.
+- Because the runner service was started before the user had active docker socket permissions (or because systemd processes don't inherit dynamic group changes without a full reboot/re-login), it was blocked from reading or writing to the Docker socket.
+
+### How we solved it:
+1. Ensure the user belongs to the `docker` group:
+   ```bash
+   sudo usermod -aG docker $USER
+   ```
+2. Grant read/write permissions to the Docker socket file so the runner background service can communicate with the daemon:
+   ```bash
+   sudo chmod 666 /var/run/docker.sock
+   sudo systemctl restart docker
+   ```
+3. Restart the actions runner service (or re-run the job in GitHub Actions):
+   ```bash
+   cd ~/actions-runner
+   sudo ./svc.sh stop
+   sudo ./svc.sh start
+   ```
+
+---
+
+## 6. Key Architecture Principles
 
 1. **Multi-Stage Build:** Uses Node in Stage 1 to build static assets, then copies them to a minimal Nginx image in Stage 2. Discards build tools and node_modules to keep the image lightweight (~25MB) and secure.
 2. **Immutability:** The exact artifact tested and built in CI is what gets deployed to the server, eliminating environment drift.
