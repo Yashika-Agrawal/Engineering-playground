@@ -60,10 +60,10 @@ Instead of manually pulling and running the container on the VM every time code 
 2. **Pull Latest Image (`docker pull <username>/railrush:latest`):**
    - **Why:** `docker run` uses cached local images if available. Explicitly pulling ensures the server fetches the newly built image layer from Docker Hub.
 
-3. **Run New Container (`docker run -d -p 8080:80 --name railrush-container ...`):**
+3. **Run New Container (`docker run -d -p 80:80 --name railrush-container ...`):**
    - **Why:** Spawns a fresh container running the latest code.
    - `-d`: Detached mode (runs continuously in background).
-   - `-p 8080:80`: Routes traffic from server port `8080` to the container's internal Nginx on port `80`.
+   - `-p 80:80`: HTTP traffic uses port `80` by default. We stop/disable the host Nginx service (`sudo systemctl stop nginx`) and map host port `80` directly to the container's internal Nginx port `80`. This allows users to access the application directly via `http://<vm-ip>/` without needing to append `:8080`.
 
 4. **Clean Up Unused Images (`docker image prune -f`):**
    - **Why:** Every new build leaves behind the previous image layer as a "dangling" (untagged) image. Without cleanup, disk space on the server gradually fills up over time.
@@ -87,7 +87,7 @@ Instead of manually pulling and running the container on the VM every time code 
 
       - name: Run updated container
         run: |
-          docker run -d -p 8080:80 --name railrush-container ${{ vars.DOCKERHUB_USERNAME }}/railrush:latest
+          docker run -d -p 80:80 --name railrush-container ${{ vars.DOCKERHUB_USERNAME }}/railrush:latest
 
       - name: Clean up unused Docker images
         run: |
