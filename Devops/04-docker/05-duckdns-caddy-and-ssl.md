@@ -74,8 +74,41 @@ When visiting `http://railrush-dev.duckdns.org`, we can inspect the browser **De
 
 ---
 
-## 6. What are the Next Implementation Steps?
+## 6. How Automated SSL / HTTPS Works in Production vs Local VM
 
-1. **DuckDNS Configuration (Done):** Mapped `railrush-dev.duckdns.org` to our VM IP (`192.168.252.2`).
-2. **Caddy Reverse Proxy (Done):** Caddy listens on port 80 and forwards requests to `frontend:80` across the internal Docker network.
-3. **Next Step - Automated SSL/HTTPS:** Enable TLS encryption so the browser shows a secure padlock 🔒 instead of "Not Secure".
+### A. How It Works in Production (The Standard Industry Setup)
+
+In a real production environment on AWS, GCP, or a VPS (e.g. DigitalOcean, Hetzner):
+1. **Public Static IP:** The server has a publicly routable IP address (e.g., `54.210.12.34`).
+2. **DNS A Record:** Your domain (e.g., `app.mycompany.com`) points directly to this public IP in DNS.
+3. **The Caddyfile:**
+   ```caddyfile
+   app.mycompany.com {
+       reverse_proxy frontend:80
+   }
+   ```
+4. **Zero-Config Auto-TLS:**
+   - Caddy contacts **Let's Encrypt** via the **ACME protocol**.
+   - Let's Encrypt connects back to `app.mycompany.com:80` (the HTTP-01 challenge) to verify ownership.
+   - Once verified, Let's Encrypt issues a publicly trusted SSL certificate.
+   - Caddy binds to port `443` (HTTPS) and automatically redirects all HTTP port `80` traffic to HTTPS with zero manual setup.
+
+---
+
+### B. How We Handle It in Our Local VM (`tls internal`)
+
+Why do we need a slight adjustment for a local lab VM?
+- **The Problem:** Our Multipass VM has a **private local IP** (`192.168.252.2`). Let's Encrypt servers on the public internet cannot reach into our laptop to perform the HTTP-01 challenge.
+- **The Solution (`tls internal`):**
+  ```caddyfile
+  railrush-dev.duckdns.org {
+      tls internal
+      reverse_proxy frontend:80
+  }
+  ```
+- **What `tls internal` does:**
+  - Caddy acts as its **own local Certificate Authority (CA)**.
+  - It generates real TLS encryption keys and serves traffic over HTTPS on port `443`.
+  - It allows us to test the exact same reverse-proxy HTTPS flow locally without needing a public static IP or router port forwarding.
+  *(Note: In production with a public IP, you simply remove `tls internal`, and Caddy immediately switches to genuine Let's Encrypt certificates).*
+
