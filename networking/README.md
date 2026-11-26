@@ -5,6 +5,7 @@ Back to the [journey overview](../README.md).
 |---|---|
 | [Content-Type and www](content-type-and-www.md) | A header tells the browser how to treat a response |
 | [Browser page load](browser-page-load.md) | HTML triggers follow-up requests for CSS, JS and images |
+| [SSL vs TLS](ssl-vs-tls.md) | What SSL and TLS do: encryption, authentication, and HTTPS on port 443 |
 | node-http-server (next) | Building a server by hand to produce these headers |
 
 Experiments live in [experiments/](experiments/).

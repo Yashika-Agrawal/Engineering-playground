@@ -1,5 +1,9 @@
 # HTTPS Verification & Reverse Proxy Headers (X-Forwarded-*, Host)
 
+> **Core Networking Reference:** For an in-depth breakdown of what SSL/TLS is, encryption, authentication, and the difference between SSL and TLS, see [ssl-vs-tls.md](../../networking/ssl-vs-tls.md).
+
+---
+
 ## 1. Evidence of HTTPS: Where to Verify in the Browser
 
 When visiting `https://railrush-dev.duckdns.org`, you can find concrete evidence in two places:
